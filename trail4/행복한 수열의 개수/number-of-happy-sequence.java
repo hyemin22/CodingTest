@@ -18,36 +18,28 @@ public class Main {
 
         for(int i = 0; i < n; i++) {
             // 행 기준 탐색
-            int now = grid[i][0];
             int count = 0;
 
             for(int j = 0; j < n; j++) {
-                if(now == grid[i][j]) {
-                    if(++count >= m) {
-                        num++;
-                        break;
-                    }
-                }
-                else {
-                    count = 1;
-                    now = grid[i][j];
+                if(j > 0 && grid[i][j] == grid[i][j-1]) count++;
+                else count = 1;
+
+                if (count >= m) {
+                    num++;
+                    break;
                 }
             }
 
             // 열 기준 탐색
-            now = grid[0][i];
             count = 0;
 
             for(int j = 0; j < n; j++) {
-                if(now == grid[j][i]) {
-                    if(++count >= m) {
-                        num++;
-                        break;
-                    }
-                }
-                else {
-                    count = 1;
-                    now = grid[j][i];
+                if(j > 0 && grid[j][i] == grid[j-1][i]) count++;
+                else count = 1;
+
+                if(count >= m) {
+                    num++;
+                    break;
                 }
             }
         }
